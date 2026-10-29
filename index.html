@@ -1,36 +1,166 @@
+
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#c9b9ee"><title>A Little Question 🌷</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#c9b9ee">
+<title>A Little Question 🌷</title>
 <style>
-:root{--ink:#4d3d5b;--muted:#766782;--pink:#f3b5cc;--lav:#d9cdf6}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 12% 17%,#fff8d8 0 2px,transparent 3px),radial-gradient(circle at 86% 14%,#fff8d8 0 2px,transparent 3px),linear-gradient(145deg,#a9a6e8,#d8b9ed 32%,#f6c5d5 68%,#ffe6cb);background-size:130px 130px,170px 170px,cover;overflow-x:hidden}.decor{position:fixed;pointer-events:none;animation:float 5s ease-in-out infinite}.d1{top:7%;left:7%;font-size:27px}.d2{top:17%;right:8%;font-size:24px;animation-delay:1s}.d3{bottom:8%;left:9%;font-size:25px}.d4{bottom:12%;right:8%;font-size:27px}@keyframes float{50%{transform:translateY(-9px) rotate(7deg)}}.shell{width:min(100%,620px);position:relative}.card{padding:clamp(22px,5vw,42px);border:1px solid #ffffffc9;border-radius:30px;background:#fffaf4f2;box-shadow:0 24px 75px #44345d2b;text-align:center;backdrop-filter:blur(12px)}.enter{animation:pageIn .5s cubic-bezier(.2,.8,.2,1) both}@keyframes pageIn{from{opacity:0;transform:translateY(18px) scale(.975);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}.topline{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#a17d9e}.progress{height:4px;background:#eee2f1;border-radius:20px;margin:18px 0 5px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,#b7a4e8,#f0a9c5);transition:width .45s}.penguins{display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,4vw,24px);margin:20px auto 16px;min-height:120px}.penguin{font-size:clamp(76px,19vw,112px);line-height:1;filter:drop-shadow(0 9px 5px #7e668b24);animation:bob 3s ease-in-out infinite}.penguin:nth-child(2){animation-delay:.6s}@keyframes bob{50%{transform:translateY(-7px) rotate(2deg)}}h1{font-family:Georgia,serif;font-weight:normal;font-size:clamp(1.7rem,6vw,2.35rem);line-height:1.2;color:#634b70;margin:9px 0 14px}p{font-size:1rem;line-height:1.75;color:var(--muted);margin:10px 0}.note{background:#fff0f5;border:1px dashed #e5b5ca;border-radius:18px;padding:17px;margin:19px 0;text-align:left}.note p{font-size:.96rem;color:#69566f}.buttons{display:grid;gap:11px;margin-top:23px}button{font:inherit;font-weight:650;cursor:pointer;border:0;border-radius:16px;padding:14px 18px;min-height:48px;transition:transform .18s,box-shadow .18s}button:hover{transform:translateY(-2px);box-shadow:0 8px 20px #c7a5c755}button:focus-visible{outline:3px solid #9275cb;outline-offset:3px}.primary{background:linear-gradient(135deg,#f6bed0,#e8a5c4);color:#573d58}.secondary{background:#f0eafa;color:#665679;border:1px solid #e0d2ef}.footer{margin-top:22px;font-size:.74rem;color:#b19bab}.letter{max-height:48vh;overflow:auto;padding-right:4px}.status{font-size:.85rem;color:#8a7890;min-height:1.2em}@media(max-width:420px){body{padding:12px}.card{border-radius:24px;padding:22px 18px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-</style></head><body><div class="decor d1">✦</div><div class="decor d2">♡</div><div class="decor d3">✧</div><div class="decor d4">🌷</div>
-<main class="shell"><section class="card enter" id="card" aria-live="polite"><div class="topline">a tiny corner of the internet ♡</div><div class="progress"><span id="progress" style="width:12%"></span></div><div class="penguins" aria-label="Two little penguins having a conversation"><span class="penguin">🐧</span><span class="penguin">🐧</span></div><h1 id="heading"></h1><p id="copy"></p><div id="note" class="note" hidden></div><div class="buttons" id="buttons"></div><div class="status" id="status" role="status"></div><div class="footer">made with a little courage & a lot of sincerity ✨</div></section></main>
+:root{--ink:#4d3d5b;--muted:#766782;--pink:#f3b5cc;--lav:#d9cdf6}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;font-family:"Trebuchet MS","Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 12% 17%,#fff8d8 0 2px,transparent 3px),radial-gradient(circle at 86% 14%,#fff8d8 0 2px,transparent 3px),linear-gradient(145deg,#a9a6e8,#d8b9ed 32%,#f6c5d5 68%,#ffe6cb);background-size:130px 130px,170px 170px,cover;overflow-x:hidden}
+.decor{position:fixed;pointer-events:none;animation:float 5s ease-in-out infinite}
+.d1{top:7%;left:7%;font-size:27px}.d2{top:17%;right:8%;font-size:24px;animation-delay:1s}.d3{bottom:8%;left:9%;font-size:25px}.d4{bottom:12%;right:8%;font-size:27px}
+@keyframes float{50%{transform:translateY(-9px) rotate(7deg)}}
+.shell{width:min(100%,620px);position:relative}
+.card{padding:clamp(22px,5vw,42px);border:1px solid #ffffffc9;border-radius:30px;background:#fffaf4f2;box-shadow:0 24px 75px #44345d2b;text-align:center;backdrop-filter:blur(12px)}
+.enter{animation:pageIn .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px) scale(.975);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+.topline{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#a17d9e}
+.progress{height:4px;background:#eee2f1;border-radius:20px;margin:18px 0 5px;overflow:hidden}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,#b7a4e8,#f0a9c5);transition:width .45s}
+.penguins{display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,4vw,24px);margin:20px auto 16px;min-height:120px}
+.penguin{font-size:clamp(76px,19vw,112px);line-height:1;filter:drop-shadow(0 9px 5px #7e668b24);animation:bob 3s ease-in-out infinite}
+.penguin:nth-child(2){animation-delay:.6s}
+@keyframes bob{50%{transform:translateY(-7px) rotate(2deg)}}
+h1{font-family:Georgia,serif;font-weight:normal;font-size:clamp(1.7rem,6vw,2.35rem);line-height:1.2;color:#634b70;margin:9px 0 14px}
+p{font-size:1rem;line-height:1.75;color:var(--muted);margin:10px 0}
+.note{background:#fff0f5;border:1px dashed #e5b5ca;border-radius:18px;padding:17px;margin:19px 0;text-align:left}
+.note p{font-size:.96rem;color:#69566f}
+.buttons{display:grid;gap:11px;margin-top:23px}
+button{font:inherit;font-weight:650;cursor:pointer;border:0;border-radius:16px;padding:14px 18px;min-height:48px;transition:transform .18s,box-shadow .18s}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 20px #c7a5c755}
+button:focus-visible{outline:3px solid #9275cb;outline-offset:3px}
+.primary{background:linear-gradient(135deg,#f6bed0,#e8a5c4);color:#573d58}
+.secondary{background:#f0eafa;color:#665679;border:1px solid #e0d2ef}
+.footer{margin-top:22px;font-size:.74rem;color:#b19bab}
+.letter{max-height:48vh;overflow:auto;padding-right:4px}
+.status{font-size:.85rem;color:#8a7890;min-height:1.2em}
+@media(max-width:420px){body{padding:12px}.card{border-radius:24px;padding:22px 18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="decor d1">✦</div><div class="decor d2">♡</div><div class="decor d3">✧</div><div class="decor d4">🌷</div>
+<main class="shell">
+<section class="card enter" id="card" aria-live="polite">
+<div class="topline">a tiny corner of the internet ♡</div>
+<div class="progress"><span id="progress" style="width:12%"></span></div>
+<div class="penguins" aria-label="Two little penguins having a conversation"><span class="penguin">🐧</span><span class="penguin">🐧</span></div>
+<h1 id="heading"></h1><p id="copy"></p>
+<div id="note" class="note" hidden></div><div class="buttons" id="buttons"></div>
+<div class="status" id="status" role="status"></div>
+<div class="footer">made with a little courage &amp; a lot of sincerity ✨</div>
+</section>
+</main>
 <script>
-/* Firebase is optional for preview. Add your Firebase web config below to save final YES confirmations online. */
-const FIREBASE_CONFIG={apiKey:"PASTE_YOUR_FIREBASE_API_KEY",authDomain:"PASTE_YOUR_PROJECT.firebaseapp.com",projectId:"PASTE_YOUR_PROJECT_ID",appId:"PASTE_YOUR_FIREBASE_APP_ID"};
+const FIREBASE_CONFIG={
+apiKey:"AIzaSyAop-iJuRaoDRnVmxCE_bLgINaINnBQXyk",
+authDomain:"just-between-us-4eecd.firebaseapp.com",
+projectId:"just-between-us-4eecd",
+storageBucket:"just-between-us-4eecd.firebasestorage.app",
+messagingSenderId:"143912866674",
+appId:"1:143912866674:web:acb42812493a80586cc3eb",
+measurementId:"G-1G5MTD3LZ9"
+};
 let db=null,fbReady=false;
 const configured=FIREBASE_CONFIG.apiKey.startsWith("AIza")&&!FIREBASE_CONFIG.projectId.includes("PASTE")&&!FIREBASE_CONFIG.appId.includes("PASTE");
-const $=id=>document.getElementById(id);let history=[];
-function render(title,text,opts={}){$('card').classList.remove('enter');void $('card').offsetWidth;$('card').classList.add('enter');$('heading').textContent=title;$('copy').textContent=text;$('note').innerHTML=opts.note||'';$('note').hidden=!opts.note;$('buttons').innerHTML='';$('status').textContent='';$('progress').style.width=(opts.step||1)*14+'%';(opts.buttons||[]).forEach(a=>{let b=document.createElement('button');b.className=a.kind||'primary';b.textContent=a.label;b.onclick=()=>{history.push({screen:title,choice:a.label});go(a.to)};$('buttons').appendChild(b)});window.scrollTo({top:0,behavior:'smooth'})}
+const $=id=>document.getElementById(id);
+let history=[];
+function render(title,text,opts={}){
+$('card').classList.remove('enter');void $('card').offsetWidth;$('card').classList.add('enter');
+$('heading').textContent=title;$('copy').textContent=text;
+$('note').innerHTML=opts.note||'';$('note').hidden=!opts.note;
+$('buttons').innerHTML='';$('status').textContent='';
+$('progress').style.width=(opts.step||1)*14+'%';
+(opts.buttons||[]).forEach(a=>{
+let b=document.createElement('button');b.className=a.kind||'primary';b.textContent=a.label;
+b.onclick=()=>{history.push({screen:title,choice:a.label});go(a.to)};
+$('buttons').appendChild(b)
+});
+window.scrollTo({top:0,behavior:'smooth'})
+}
 const btn=(label,to,kind='primary')=>({label,to,kind});
 function go(s){
 if(s==='home')return start();
-if(s==='start'){render('Heyyy, can I ask you something?',"It's just a little something I've been wanting to ask you. Nothing scary, promise hehe. 💌",{step:1,buttons:[btn('Yeah, sure :) 💗','question'),btn('Hmm... not now 🙈','detour','secondary')]})}
-else if(s==='detour'){render('Awww, not now? 🥹',"That's okayyy! 💗 I don't want to make you uncomfortable.",{step:2,note:'<p>But if you’re comfortable, there’s one tiny question I’d still love to ask. 🌷</p>',buttons:[btn("Okayyy, I'll listen 🫶🏻",'last'),btn('Still no hehe 🙈','last','secondary')]})}
-else if(s==='last'){render('Last chanceee...',"If you're not comfortable, it's completely okay. 🌷",{step:3,buttons:[btn('Okay, tell me 💌','question'),btn("I'd rather not 🥹",'goodbye','secondary')]})}
-else if(s==='question'){render("So... here's my question 🌸",'Would you be okay with us getting a little closer as friends? 💗',{step:4,note:"<p>Just talking more, getting to know each other better, and having those random conversations. Nothing more than you're comfortable with, promise. 🫶🏻</p>",buttons:[btn("Yeah, I'd be okay with that 💗",'confession'),btn("I don't think so 🙈",'respect','secondary')]})}
-else if(s==='confession'){render('First of all… thank youuu! 🥹💗',"Okay, so here it goes… 🙈",{step:5,note:"<div class='letter'><p>I find you really cute, and honestly, I can't quite explain why. There's just something about you that caught my attention. 🌷✨</p><p>I just wanted to talk to you and have one of those long conversations where we lose track of time. You know, the kind where one conversation turns into hours without even realizing it. ☁️💗</p><p>I first felt like talking to you during the trip itself, but somehow, it never happened. And that's why I'm asking you now. 😊</p><p>I know this might sound like a dialogue straight out of a movie 😂, but you're the one who dragged me this far! And somehow, you gave me a different kind of energy because I've found other girls cute too, but I never really felt this same urge to go up to them and start a conversation. With you, it just felt different. 🌸💗</p><p>Sooo yeah, that's pretty much it! I just wanted to be honest with you and say what was on my mind. No expectations, no pressure, and nothing you need to feel awkward about. I just wanted you to know. :) 💗</p><p style='text-align:center'>That's all I wanted to say… thank you for reading this. 🐧💌</p></div>",buttons:[btn("That's all 💗",'confirm') ]})}
-else if(s==='confirm'){render('One tiny thing before you go… 💗',"If you're comfortable with getting closer as friends, you can let me know here. No pressure at all. 🌷",{step:6,note:'<p>Press this only if you want to confirm that you’re okay with becoming closer friends. This will send that confirmation to me. 💌</p>',buttons:[btn("Yes, I'm okay with that 💌",'save'),btn("I'd rather not answer 🤍",'end','secondary')]})}
+if(s==='start'){
+render('Heyyy, can I ask you something?',"It's just a little something I've been wanting to ask you. Nothing scary, promise hehe. 💌",
+{step:1,buttons:[btn('Yeah, sure :) 💗','question'),btn('Hmm... not now 🙈','detour','secondary')]})
+}
+else if(s==='detour'){
+render('Awww, not now? 🥹',"That's okayyy! 💗 I don't want to make you uncomfortable.",
+{step:2,note:'<p>But if you’re comfortable, there’s one tiny question I’d still love to ask. 🌷</p>',
+buttons:[btn("Okayyy, I'll listen 🫶🏻",'last'),btn('Still no hehe 🙈','last','secondary')]})
+}
+else if(s==='last'){
+render('Last chanceee...',"If you're not comfortable, it's completely okay. 🌷",
+{step:3,buttons:[btn('Okay, tell me 💌','question'),btn("I'd rather not 🥹",'goodbye','secondary')]})
+}
+else if(s==='question'){
+render("So... here's my question 🌸",'Would you be okay with us getting a little closer as friends? 💗',
+{step:4,note:"<p>Just talking more, getting to know each other better, and having those random conversations. Nothing more than you're comfortable with, promise. 🫶🏻</p>",
+buttons:[btn("Yeah, I'd be okay with that 💗",'confession'),btn("I don't think so 🙈",'respect','secondary')]})
+}
+else if(s==='confession'){
+render('First of all… thank youuu! 🥹💗',"Okay, so here it goes… 🙈",
+{step:5,note:"<div class='letter'><p>I find you really cute, and honestly, I can't quite explain why. There's just something about you that caught my attention. 🌷✨</p><p>I just wanted to talk to you and have one of those long conversations where we lose track of time. You know, the kind where one conversation turns into hours without even realizing it. ☁️💗</p><p>I first felt like talking to you during the trip itself, but somehow, it never happened. And that's why I'm asking you now. 😊</p><p>I know this might sound like a dialogue straight out of a movie 😂, but you're the one who dragged me this far! And somehow, you gave me a different kind of energy because I've found other girls cute too, but I never really felt this same urge to go up to them and start a conversation. With you, it just felt different. 🌸💗</p><p>Sooo yeah, that's pretty much it! I just wanted to be honest with you and say what was on my mind. No expectations, no pressure, and nothing you need to feel awkward about. I just wanted you to know. :) 💗</p><p style='text-align:center'>That's all I wanted to say… thank you for reading this. 🐧💌</p></div>",
+buttons:[btn("That's all 💗",'confirm')]})
+}
+else if(s==='confirm'){
+render('One tiny thing before you go… 💗',"If you're comfortable with getting closer as friends, you can let me know here. No pressure at all. 🌷",
+{step:6,note:'<p>Press this only if you want to confirm that you’re okay with becoming closer friends. This will send that confirmation to me. 💌</p>',
+buttons:[btn("Yes, I'm okay with that 💌",'save'),btn("I'd rather not answer 🤍",'end','secondary')]})
+}
 else if(s==='save')saveYes();
-else if(s==='respect'){render("It's okay, really. 🤍",'I respect your decision, and thank you for being honest with me. I genuinely wish you a bright future filled with happiness and beautiful moments. ✨',{step:7,note:"<p>Maybe you'll be my one unsuccessful wish — but I'll always respect your choice. 🌷</p><p style='text-align:center'>Byeeee ❤️</p>",buttons:[btn('Bye bye 🌷','end')]})}
-else if(s==='goodbye'){render("That's totally okay. 🤍",'Thank you. Have a nice day, take care, and keep smiling! 🌼',{step:7,note:'<p style="text-align:center">Byeeee ❤️</p>',buttons:[btn('Close this little story ♡','end')]})}
-else if(s==='end'){render('End of this little story 🌙',"Whatever your answer, thank you for taking a moment to be here. Take careee! 💗",{step:7,buttons:[btn('Replay from the beginning ↺','start')]})}
+else if(s==='respect'){
+render("It's okay, really. 🤍",'I respect your decision, and thank you for being honest with me. I genuinely wish you a bright future filled with happiness and beautiful moments. ✨',
+{step:7,note:"<p>Maybe you'll be my one unsuccessful wish — but I'll always respect your choice. 🌷</p><p style='text-align:center'>Byeeee ❤️</p>",
+buttons:[btn('Bye bye 🌷','end')]})
+}
+else if(s==='goodbye'){
+render("That's totally okay. 🤍",'Thank you. Have a nice day, take care, and keep smiling! 🌼',
+{step:7,note:'<p style="text-align:center">Byeeee ❤️</p>',buttons:[btn('Close this little story ♡','end')]})
+}
+else if(s==='end'){
+render('End of this little story 🌙',"Whatever your answer, thank you for taking a moment to be here. Take careee! 💗",
+{step:7,buttons:[btn('Replay from the beginning ↺','start')]})
+}
 }
 async function saveYes(){
 render('Thank you for letting me know 💗',"Your answer is being saved…",{step:7});
-if(!configured||!fbReady||!db){$('status').textContent='Preview only: Firebase is not connected yet, so no response was sent.';$('buttons').innerHTML='';let b=document.createElement('button');b.className='secondary';b.textContent='Finish 🌷';b.onclick=()=>go('end');$('buttons').appendChild(b);return}
-try{await db.collection('friendshipConfirmations').add({confirmation:'yes',message:'I am okay with getting closer as friends',createdAt:firebase.firestore.FieldValue.serverTimestamp()});render('A little confirmation sent 💌',"Thank you for being honest with me. I'm glad you let me know. 🌷",{step:7,note:'<p style="text-align:center">Have a lovely dayyy! 💗</p>',buttons:[btn('Finish 🌙','end')]})}
-catch(e){render('Oops, that didn’t go through 🤍',"The confirmation couldn't be sent just now. Please try again if you'd like.",{step:7,buttons:[btn('Try again 💌','save'),btn('Finish','end','secondary')]})}
+if(!configured||!fbReady||!db){
+$('status').textContent='Preview only: Firebase is not connected yet, so no response was sent.';
+$('buttons').innerHTML='';
+let b=document.createElement('button');b.className='secondary';b.textContent='Finish 🌷';b.onclick=()=>go('end');$('buttons').appendChild(b);return
 }
-render('Heyyy, can I ask you something?',"It's just a little something I've been wanting to ask you. Nothing scary, promise hehe. 💌",{step:1,buttons:[btn('Yeah, sure :) 💗','question'),btn('Hmm... not now 🙈','detour','secondary')]});
-if(configured){let a=document.createElement('script');a.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js';a.onload=()=>{let f=document.createElement('script');f.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js';f.onload=()=>{try{firebase.initializeApp(FIREBASE_CONFIG);db=firebase.firestore();fbReady=true}catch(e){console.error(e)}};document.head.appendChild(f)};document.head.appendChild(a)}
-</script></body></html>
+try{
+await db.collection('friendshipConfirmations').add({
+confirmation:'yes',
+message:'I am okay with getting closer as friends',
+createdAt:firebase.firestore.FieldValue.serverTimestamp()
+});
+render('A little confirmation sent 💌',"Thank you for being honest with me. I'm glad you let me know. 🌷",
+{step:7,note:'<p style="text-align:center">Have a lovely dayyy! 💗</p>',buttons:[btn('Finish 🌙','end')]})
+}
+catch(e){
+render('Oops, that didn’t go through 🤍',"The confirmation couldn't be sent just now. Please try again if you'd like.",
+{step:7,buttons:[btn('Try again 💌','save'),btn('Finish','end','secondary')]})
+}
+}
+render('Heyyy, can I ask you something?',"It's just a little something I've been wanting to ask you. Nothing scary, promise hehe. 💌",
+{step:1,buttons:[btn('Yeah, sure :) 💗','question'),btn('Hmm... not now 🙈','detour','secondary')]});
+if(configured){
+let a=document.createElement('script');a.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js';
+a.onload=()=>{
+let f=document.createElement('script');f.src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js';
+f.onload=()=>{
+try{firebase.initializeApp(FIREBASE_CONFIG);db=firebase.firestore();fbReady=true}catch(e){console.error(e)}
+};
+document.head.appendChild(f)
+};
+document.head.appendChild(a)
+}
+</script>
+</body>
+</html>
