@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#27213e">
+<title>Just Between Us 🐧💗</title>
+<style>
+:root{--ink:#352942;--pink:#ffabc4;--cream:#fff0d5;--night:#101c3d}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Trebuchet MS",serif;color:#fff8ff}
+body{min-height:100svh;overflow-x:hidden;background:#19172a}
+button{font:inherit}
+.page{display:none;position:relative;isolation:isolate;min-height:100svh;overflow-x:hidden;overflow-y:auto;padding:18px 16px 20px;flex-direction:column;animation:arrive .45s ease both}
+.page.active{display:flex}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.scene::before{content:"";position:absolute;inset:0;z-index:-3;background:linear-gradient(180deg,rgba(20,23,54,.18),transparent 42%,rgba(34,19,43,.25)),linear-gradient(180deg,#39345f 0%,#8a5478 37%,#ff956e 67%,#332c52 100%)}
+.scene-night::before{background:linear-gradient(180deg,rgba(8,18,46,.2),transparent 45%,rgba(21,20,49,.3)),linear-gradient(180deg,#081733 0%,#172852 45%,#6a4773 70%,#ff8d72 100%)}
+.scene-last::before{background:linear-gradient(180deg,#111b3c 0%,#17284c 43%,#634b75 70%,#ff9279 100%)}
+.scene-card::before{background:linear-gradient(180deg,#312548 0%,#6e466a 34%,#f79b87 66%,#f5c4a7 100%)}
+.stars{position:absolute;inset:0;z-index:-2;pointer-events:none;background-image:radial-gradient(circle at 19% 13%,#fff9e6 0 1.4px,transparent 2px),radial-gradient(circle at 78% 18%,#ffe7a4 0 1.8px,transparent 2.5px),radial-gradient(circle at 83% 35%,#fff0bf 0 1px,transparent 2px),radial-gradient(circle at 29% 47%,#fff7d9 0 1.2px,transparent 2px),radial-gradient(circle at 67% 56%,#ffe7a4 0 1.4px,transparent 2px),radial-gradient(circle at 12% 63%,#fff2d0 0 1px,transparent 2px),radial-gradient(circle at 90% 72%,#ffe9bd 0 1.5px,transparent 2px);opacity:.9}
+.moon{position:absolute;top:13%;right:12%;font-size:clamp(42px,10vw,66px);line-height:1;filter:drop-shadow(0 0 14px rgba(255,215,121,.3));z-index:-1}
+.city{position:absolute;z-index:-1;bottom:21%;left:0;width:100%;height:22%;opacity:.92;background:#292542;clip-path:polygon(0 100%,0 48%,4% 48%,4% 31%,9% 31%,9% 63%,13% 63%,13% 42%,18% 42%,18% 17%,23% 17%,23% 58%,29% 58%,29% 36%,34% 36%,34% 65%,39% 65%,39% 27%,44% 27%,44% 55%,49% 55%,49% 39%,54% 39%,54% 12%,60% 12%,60% 58%,66% 58%,66% 33%,71% 33%,71% 62%,77% 62%,77% 25%,83% 25%,83% 49%,89% 49%,89% 18%,95% 18%,95% 58%,100% 58%,100% 100%)}
+.city::after{content:"";position:absolute;inset:18% 0 0;opacity:.65;background-image:radial-gradient(circle,#ffd98e 1px,transparent 1.8px),radial-gradient(circle,#ffd98e 1px,transparent 1.8px);background-size:25px 24px,37px 31px;background-position:6px 2px,17px 11px}
+.vines{position:absolute;top:-20px;left:-9px;z-index:-1;width:100px;height:36%;border-left:5px solid rgba(40,48,39,.9);border-radius:0 0 70% 0;transform:rotate(-7deg);filter:drop-shadow(0 1px 2px #1d1c2d)}
+.vines::before{content:"🌿 🌸 🍂 🌿 🌺 🍃 🌼";position:absolute;top:4px;left:5px;width:100px;font-size:25px;line-height:1.45;overflow-wrap:anywhere}
+.lantern{position:absolute;top:16%;left:8%;font-size:39px;filter:drop-shadow(0 0 12px #ffbd63);z-index:-1}
+.content{width:min(100%,430px);margin:auto;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:10px 0}
+.question{width:100%;max-width:330px;font-size:clamp(25px,6vw,32px);line-height:1.32;font-weight:normal;text-shadow:0 2px 12px rgba(25,18,44,.4);margin:0}
+.small-copy{max-width:340px;margin:0;font-size:clamp(16px,4.2vw,19px);line-height:1.5;color:#fff2fb;text-shadow:0 2px 8px rgba(20,15,39,.55)}
+.chat{align-self:flex-end;margin-right:2%;padding:12px 16px;max-width:82%;border-radius:23px 23px 7px 23px;color:#38253b;background:var(--pink);box-shadow:0 5px 0 rgba(52,28,54,.16);transform:rotate(-2deg);line-height:1.35}
+.chat-button{font-family:inherit;font-size:inherit;text-align:center;cursor:pointer;border:0;display:block;position:relative;z-index:5;appearance:none;-webkit-appearance:none}
+.chat-button:focus-visible{outline:3px solid #fff0d5;outline-offset:3px}
+.reply{align-self:flex-start;max-width:85%;padding:12px 15px;border-radius:22px 22px 22px 7px;color:#fdf5ff;background:rgba(19,30,63,.34);border:1px solid rgba(255,255,255,.18);line-height:1.5;text-align:left}
+.paper{width:100%;padding:20px 18px;color:#49344a;background:radial-gradient(circle at 0 0,rgba(255,179,197,.4),transparent 25%),radial-gradient(circle at 100% 100%,rgba(255,178,144,.35),transparent 28%),#fff0d4;border:2px solid rgba(255,226,205,.95);border-radius:9px 15px 8px 14px;box-shadow:0 12px 35px rgba(22,16,41,.28);line-height:1.55;text-align:center}
+.paper h2{margin:0 0 10px;font-size:clamp(23px,6vw,29px);font-weight:normal}
+.paper p{margin:9px 0}
+.message-page .content{margin:12px auto}
+.message-page .paper{text-align:left;font-size:15px;line-height:1.55;padding:18px 16px}
+.buttons{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:10px;position:relative;z-index:5}
+.btn{border:0;border-radius:15px;padding:12px 15px;min-height:46px;max-width:100%;cursor:pointer;color:#3b293c;background:#ffabc4;box-shadow:0 4px 0 rgba(49,26,52,.2);transition:transform .18s ease,filter .18s ease;flex:1 1 145px}
+.btn:active{transform:translateY(2px) scale(.99)}
+.btn.secondary{background:#eee5ef}
+.btn.cream{background:#fff0d5}
+.btn.full{flex-basis:100%;width:100%}
+.penguins{width:100%;display:flex;align-items:flex-end;justify-content:center;gap:5px;margin-top:auto;padding-top:10px;position:relative;z-index:1;flex-shrink:0}
+.penguin{width:clamp(92px,30vw,140px);height:clamp(105px,34vw,152px);position:relative;display:flex;justify-content:center;align-items:center;border-radius:49% 49% 43% 43%;background:linear-gradient(110deg,#302b38,#51434b 50%,#211f2c);border:3px solid #f5b58a;box-shadow:inset 4px 2px 0 rgba(255,255,255,.12),0 5px 10px rgba(20,14,33,.3);flex-shrink:0}
+.penguin::before{content:"";position:absolute;width:72%;height:73%;bottom:3px;border-radius:48% 48% 44% 44%;background:#fff2e3;border:1px solid #e6cdbb}
+.face{position:absolute;top:34%;display:flex;align-items:center;gap:13px;z-index:1}
+.eye{width:10px;height:13px;border-radius:50%;background:#211b26;box-shadow:inset 2px 2px 0 #fff}
+.beak{position:absolute;top:51%;width:0;height:0;z-index:2;border-left:8px solid transparent;border-right:8px solid transparent;border-top:11px solid #ff9e39}
+.blush{position:absolute;top:49%;width:16px;height:9px;border-radius:50%;background:#ff9eaa;opacity:.8;filter:blur(1px)}
+.blush.left{left:13%}.blush.right{right:13%}
+.wing{position:absolute;z-index:3;bottom:19%;width:26%;height:43%;border-radius:70% 35% 65% 35%;background:linear-gradient(100deg,#24212e,#4a3d49);border:2px solid #26212d}
+.wing.left{left:-4%;transform:rotate(24deg)}.wing.right{right:-4%;transform:rotate(-24deg)}
+.penguin .flower{position:absolute;z-index:4;left:42%;bottom:27%;font-size:21px;transform:rotate(-10deg)}
+.penguin.bow::after{content:"🎀";position:absolute;z-index:4;top:-10px;right:4px;font-size:23px;transform:rotate(12deg)}
+.penguin.back{height:clamp(100px,30vw,132px);border-color:#d79a77;background:linear-gradient(90deg,#24212d,#50404a,#292430)}
+.penguin.back::before,.penguin.back .face,.penguin.back .beak,.penguin.back .blush,.penguin.back .wing{display:none}
+.ledge{height:25px;width:calc(100% + 32px);margin:-4px -16px -20px;background:linear-gradient(180deg,#8a665d,#594657 55%,#3b3347);border-top:4px solid #f7bb8d;box-shadow:0 -5px 15px rgba(255,182,122,.15);position:relative;z-index:2;flex-shrink:0}
+.ledge::after{content:"🌼";position:absolute;left:4px;top:-26px;font-size:21px}
+.ledge::before{content:"🌸";position:absolute;right:5px;top:-26px;font-size:21px}
+.brick-wall{width:calc(100% + 32px);height:42px;margin:-2px -16px -20px;border-top:4px solid #f4b18c;background:repeating-linear-gradient(0deg,transparent 0 18px,rgba(57,42,57,.65) 19px 21px),repeating-linear-gradient(90deg,#80605f 0 48px,#594557 49px 52px);z-index:2;flex-shrink:0}
+.tiny-heart{font-size:24px;filter:drop-shadow(0 2px 6px rgba(255,120,162,.45))}
+.footnote{font-size:12px;line-height:1.4;opacity:.88;text-align:center;margin:0 0 5px;flex-basis:100%}
+.first-page .content{margin-top:8px;margin-bottom:6px;flex-shrink:0}
+.first-page .question{max-width:300px}
+.first-page .tiny-heart{display:none}
+.last-chance .content{margin-top:12px}
+@media(min-width:560px){.page{min-height:100svh;max-width:520px;margin:0 auto;border-left:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15)}body{background:#19172a}}
+@media(max-height:720px){.page{padding-top:10px;padding-bottom:12px}.content{gap:9px}.penguin{height:100px;width:90px}.penguin.back{height:96px}.question{font-size:24px}.paper{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main id="app">
+<section class="page scene first-page active" id="p1">
+<div class="stars"></div><div class="vines"></div><div class="lantern">🏮</div><div class="city"></div>
+<div class="content"><p class="question">Heyy...<br>can I ask you<br>something? 💗</p><div class="tiny-heart">♡ ♥ ♡</div></div>
+<div class="penguins">
+<div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span><span class="flower">🌼</span></div>
+<div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div>
+</div><div class="ledge"></div><div class="buttons"><button class="btn" onclick="go('p5')">Yess, sure :)</button><button class="btn secondary" onclick="go('p2')">Hmm... not now</button></div>
+</section>
+
+<section class="page scene scene-night" id="p2">
+<div class="stars"></div><div class="vines"></div><div class="city"></div><div class="moon">🌙</div>
+<div class="content"><button class="chat chat-button" onclick="go('p5')">Okay fine,<br>I'll listen 🥹</button><p class="small-copy">Aww... not now? 🥺<br>That's okay!</p><p class="small-copy">But what if you still<br>hear me out? 💗</p><button class="chat chat-button" style="align-self:center;transform:rotate(2deg);background:#eee5ef" onclick="go('p3')">Still no, promise 🤞<br>(｡•́︿•̀｡)</button></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div>
+</section>
+
+<section class="page scene scene-last last-chance" id="p3">
+<div class="stars"></div><div class="vines"></div><div class="lantern">🏮</div><div class="city"></div><div class="moon">🌙</div>
+<div class="content"><button class="chat chat-button" onclick="go('p5')">Okayyy, go ahead 🧡</button><p class="small-copy">Last chanceee...? 🥺</p><p class="small-copy">Can I just ask you this one time?</p><p class="small-copy">If you're not comfortable,<br>it's completely okay!! 💗</p><button class="chat chat-button" style="align-self:center;background:#eee5ef;transform:rotate(2deg)" onclick="go('p4')">I'd still<br>rather not 😌</button></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div>
+<div class="brick-wall"></div>
+</section>
+
+<section class="page scene scene-card" id="p4">
+<div class="stars"></div><div class="vines"></div><div class="lantern">🏮</div><div class="city"></div>
+<div class="content"><div class="paper"><p>That's totally okayy. 🤍</p><p>Thank you for your time.<br>Have a nice day,<br>take care and keep smiling! 🌼</p><h2>Byeeee ❤️</h2></div></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div>
+</section>
+
+<section class="page scene scene-card" id="p5">
+<div class="stars"></div><div class="vines"></div><div class="city"></div>
+<div class="content"><div class="paper"><h2>Yayy! 💗</h2><p>So here it is...</p><p>Would you be okay with us getting a little closer as friends? 🌼</p><p>Just talking more, getting to know each other better, sharing thoughts, and making more memories. Nothing more than what you're comfortable with, of course. 💗</p></div></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div><div class="buttons"><button class="btn full" onclick="go('p7')">Yeah, I'd be okay with that 💛</button><button class="btn secondary full" onclick="go('p6')">I don't think so 😌</button></div>
+</section>
+
+<section class="page scene scene-night" id="p6">
+<div class="stars"></div><div class="vines"></div><div class="city"></div><div class="moon">🌙</div>
+<div class="content"><p class="small-copy">It's okay. 🤍</p><p class="small-copy">I completely respect your decision. Thank you for being honest with me.</p><p class="small-copy">I hope you have a bright future, with lots of happiness and amazing moments. ✨</p><p class="small-copy">You'll be my one unsuccessful wish, but that's mine to carry. 💗</p><h2 style="font-weight:normal">Byeeee ❤️</h2></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div>
+</section>
+
+<section class="page scene scene-card" id="p7">
+<div class="stars"></div><div class="vines"></div><div class="city"></div>
+<div class="content"><div class="paper"><h2>First of all...</h2><h2>Thank you! 💗</h2><p>I just wanted to be honest with you, about a few things... 🌼</p></div></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span><span class="flower">💌</span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div><div class="buttons"><button class="btn full" onclick="go('p8')">Read my message 💌</button></div>
+</section>
+
+<section class="page scene scene-card message-page" id="p8">
+<div class="stars"></div><div class="vines"></div><div class="lantern">🏮</div><div class="city"></div>
+<div class="content"><div class="paper"><p><strong>Okay, so here it goes... 🙈</strong></p><p>I find you really cute, and honestly, I can't quite explain why. There's just something about you that caught my attention. 🌷✨</p><p>I just wanted to talk to you and have one of those long conversations where we lose track of time. You know, the kind where one conversation turns into hours without even realizing it. ☁️💗</p><p>I first felt like talking to you during the trip itself, but somehow, it never happened. And that's why I'm asking you now. 😊</p><p>I know this might sound like a dialogue straight out of a movie 😂, but you're the one who dragged me this far! And somehow, you gave me a different kind of energy because I've found other girls cute too, but I never really felt this same urge to go up to them and start a conversation. With you, it just felt different. 🌸💗</p><p>Sooo yeah, that's pretty much it! I just wanted to be honest with you and say what was on my mind. No expectations, no pressure, and nothing you need to feel awkward about. I just wanted you to know. :) 💗</p><p>That's all I wanted to say... thank you for reading this. 🐧💌</p></div></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span><span class="flower">💗</span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div>
+<div class="buttons"><button class="btn full" onclick="confirmYes()">Yes, I'm okay with that 💌</button><button class="btn secondary full" onclick="go('p9')">I'd rather not answer 🤍</button><p class="footnote">The first button tries to save a confirmation for the website owner. No reply is sent if you choose not to answer.</p></div>
+</section>
+
+<section class="page scene scene-card" id="p9">
+<div class="stars"></div><div class="vines"></div><div class="city"></div>
+<div class="content"><div class="paper"><h2>Thank you for reading 🤍</h2><p>No pressure at all. Take care, keep smiling, and have a lovely day. 🌼</p><h2>Byeeee ❤️</h2></div></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div>
+</section>
+
+<section class="page scene scene-night" id="p10">
+<div class="stars"></div><div class="vines"></div><div class="city"></div><div class="moon">🌙</div>
+<div class="content"><div class="paper"><h2>Thank you for telling me! 💗</h2><p>Your confirmation has been recorded and sent. 🌷</p></div></div>
+<div class="penguins"><div class="penguin"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div><div class="penguin bow"><div class="face"><span class="eye"></span><span class="eye"></span></div><span class="beak"></span><span class="blush left"></span><span class="blush right"></span><span class="wing left"></span><span class="wing right"></span></div></div><div class="ledge"></div>
+</section>
+</main>
+<script>
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAop-iJuRaoDRnVmxCE_bLgINaINnBQXyk",
+  authDomain: "just-between-us-4eecd.firebaseapp.com",
+  projectId: "just-between-us-4eecd",
+  storageBucket: "just-between-us-4eecd.firebasestorage.app",
+  messagingSenderId: "143912866674",
+  appId: "1:143912866674:web:acb42812493a80586cc3eb",
+  measurementId: "G-1G5MTD3LZ9"
+};
+function go(pageId){
+  document.querySelectorAll(".page").forEach(page=>page.classList.remove("active"));
+  const next=document.getElementById(pageId);
+  if(next){next.classList.add("active");next.scrollTop=0;window.scrollTo({top:0,behavior:"smooth"});}
+}
+async function confirmYes(){
+  const btn=document.querySelector('#p8 button[onclick="confirmYes()"]');
+  if(btn)btn.disabled=true;
+  try{
+    if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.projectId){
+      alert("Firebase isn't configured, so this confirmation cannot be saved online yet.");
+      go("p10");return;
+    }
+    if(!window.firebase)await loadFirebase();
+    if(!firebase.apps.length)firebase.initializeApp(FIREBASE_CONFIG);
+    await firebase.firestore().collection("friendshipConfirmations").add({
+      confirmation:"yes",
+      message:"I am okay with getting closer as friends",
+      createdAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    go("p10");
+  }catch(error){
+    console.error("Could not save confirmation:",error);
+    alert("The confirmation could not be saved online. Please check Firebase and Firestore rules.");
+    if(btn)btn.disabled=false;
+  }
+}
+function loadFirebase(){
+  return new Promise((resolve,reject)=>{
+    const script=document.createElement("script");
+    script.src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js";
+    script.onload=()=>{
+      const firestore=document.createElement("script");
+      firestore.src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js";
+      firestore.onload=resolve;firestore.onerror=reject;document.head.appendChild(firestore);
+    };
+    script.onerror=reject;document.head.appendChild(script);
+  });
+}
+</script>
+</body>
+</html>
