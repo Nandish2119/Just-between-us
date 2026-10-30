@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#27213e">
+<title>Just Between Us 🐧💗</title>
+<style>
+:root{--ink:#352942;--pink:#ffabc4;--cream:#fff0d5;--night:#101c3d}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Trebuchet MS",serif;color:#fff8ff}
+body{min-height:100svh;overflow-x:hidden;background:#19172a}
+button{font:inherit}
+.page{display:none;position:relative;isolation:isolate;min-height:100svh;overflow-x:hidden;overflow-y:auto;padding:18px 16px 20px;flex-direction:column;animation:arrive .45s ease both}
+.page.active{display:flex}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.scene::before{content:"";position:absolute;inset:0;z-index:-3;background:linear-gradient(180deg,rgba(20,23,54,.18),transparent 42%,rgba(34,19,43,.25)),linear-gradient(180deg,#39345f 0%,#8a5478 37%,#ff956e 67%,#332c52 100%)}
+.scene-night::before{background:linear-gradient(180deg,rgba(8,18,46,.2),transparent 45%,rgba(21,20,49,.3)),linear-gradient(180deg,#081733 0%,#172852 45%,#6a4773 70%,#ff8d72 100%)}
+.scene-last::before{background:linear-gradient(180deg,#111b3c 0%,#17284c 43%,#634b75 70%,#ff9279 100%)}
+.scene-card::before{background:linear-gradient(180deg,#312548 0%,#6e466a 34%,#f79b87 66%,#f5c4a7 100%)}
+.stars{position:absolute;inset:0;z-index:-2;pointer-events:none;background-image:radial-gradient(circle at 19% 13%,#fff9e6 0 1.4px,transparent 2px),radial-gradient(circle at 78% 18%,#ffe7a4 0 1.8px,transparent 2.5px),radial-gradient(circle at 83% 35%,#fff0bf 0 1px,transparent 2px),radial-gradient(circle at 29% 47%,#fff7d9 0 1.2px,transparent 2px),radial-gradient(circle at 67% 56%,#ffe7a4 0 1.4px,transparent 2px),radial-gradient(circle at 12% 63%,#fff2d0 0 1px,transparent 2px),radial-gradient(circle at 90% 72%,#ffe9bd 0 1.5px,transparent 2px);opacity:.9}
+.moon{position:absolute;top:13%;right:12%;font-size:clamp(42px,10vw,66px);line-height:1;filter:drop-shadow(0 0 14px rgba(255,215,121,.3));z-index:-1}
+.city{position:absolute;z-index:-1;bottom:21%;left:0;width:100%;height:22%;opacity:.92;background:#292542;clip-path:polygon(0 100%,0 48%,4% 48%,4% 31%,9% 31%,9% 63%,13% 63%,13% 42%,18% 42%,18% 17%,23% 17%,23% 58%,29% 58%,29% 36%,34% 36%,34% 65%,39% 65%,39% 27%,44% 27%,44% 55%,49% 55%,49% 39%,54% 39%,54% 12%,60% 12%,60% 58%,66% 58%,66% 33%,71% 33%,71% 62%,77% 62%,77% 25%,83% 25%,83% 49%,89% 49%,89% 18%,95% 18%,95% 58%,100% 58%,100% 100%)}
+.city::after{content:"";position:absolute;inset:18% 0 0;opacity:.65;background-image:radial-gradient(circle,#ffd98e 1px,transparent 1.8px),radial-gradient(circle,#ffd98e 1px,transparent 1.8px);background-size:25px 24px,37px 31px;background-position:6px 2px,17px 11px}
+.vines{position:absolute;top:-20px;left:-9px;z-index:-1;width:100px;height:36%;border-left:5px solid rgba(40,48,39,.9);border-radius:0 0 70% 0;transform:rotate(-7deg);filter:drop-shadow(0 1px 2px #1d1c2d)}
+.vines::before{content:"🌿 🌸 🍂 🌿 🌺 🍃 🌼";position:absolute;top:4px;left:5px;width:100px;font-size:25px;line-height:1.45;overflow-wrap:anywhere}
+.lantern{position:absolute;top:16%;left:8%;font-size:39px;filter:drop-shadow(0 0 12px #ffbd63);z-index:-1}
+.content{width:min(100%,430px);margin:auto;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:10px 0}
+.question{width:100%;max-width:330px;font-size:clamp(25px,6vw,32px);line-height:1.32;font-weight:normal;text-shadow:0 2px 12px rgba(25,18,44,.4);margin:0}
+.small-copy{max-width:340px;margin:0;font-size:clamp(16px,4.2vw,19px);line-height:1.5;color:#fff2fb;text-shadow:0 2px 8px rgba(20,15,39,.55)}
+.chat{align-self:flex-end;margin-right:2%;padding:12px 16px;max-width:82%;border-radius:23px 23px 7px 23px;color:#38253b;background:var(--pink);box-shadow:0 5px 0 rgba(52,28,54,.16);transform:rotate(-2deg);line-height:1.35}
+.chat-button{font-family:inherit;font-size:inherit;text-align:center;cursor:pointer;border:0;display:block;position:relative;z-index:5;appearance:none;-webkit-appearance:none}
+.chat-button:focus-visible{outline:3px solid #fff0d5;outline-offset:3px}
+.reply{align-self:flex-start;max-width:85%;padding:12px 15px;border-radius:22px 22px 22px 7px;color:#fdf5ff;background:rgba(19,30,63,.34);border:1px solid rgba(255,255,255,.18);line-height:1.5;text-align:left}
+.paper{width:100%;padding:20px 18px;color:#49344a;background:radial-gradient(circle at 0 0,rgba(255,179,197,.4),transparent 25%),radial-gradient(circle at 100% 100%,rgba(255,178,144,.35),transparent 28%),#fff0d4;border:2px solid rgba(255,226,205,.95);border-radius:9px 15px 8px 14px;box-shadow:0 12px 35px rgba(22,16,41,.28);line-height:1.55;text-align:center}
+.paper h2{margin:0 0 10px;font-size:clamp(23px,6vw,29px);font-weight:normal}
+.paper p{margin:9px 0}
+.message-page .content{margin:12px auto}
+.message-page .paper{text-align:left;font-size:15px;line-height:1.55;padding:18px 16px}
+.buttons{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:10px;position:relative;z-index:5}
+.btn{border:0;border-radius:15px;padding:12px 15px;min-height:46px;max-width:100%;cursor:pointer;color:#3b293c;background:#ffabc4;box-shadow:0 4px 0 rgba(49,26,52,.2);transition:transform .18s ease,filter .18s ease;flex:1 1 145px}
+.btn:active{transform:translateY(2px) scale(.99)}
+.btn.secondary{background:#eee5ef}
+.btn.cream{background:#fff0d5}
+.btn.full{flex-basis:100%;width:100%}
+.penguins{width:100%;display:flex;align-items:flex-end;justify-content:center;gap:5px;margin-top:auto;padding-top:10px;position:relative;z-index:1;flex-shrink:0}
+.penguin{width:clamp(92px,30vw,140px);height:clamp(105px,34vw,152px);position:relative;display:flex;justify-content:center;align-items:center;border-radius:49% 49% 43% 43%;background:linear-gradient(110deg,#302b38,#51434b 50%,#211f2c);border:3px solid #f5b58a;box-shadow:inset 4px 2px 0 rgba(255,255,255,.12),0 5px 10px rgba(20,14,33,.3);flex-shrink:0}
+.penguin::before{content:"";position:absolute;width:72%;height:73%;bottom:3px;border-radius:48% 48% 44% 44%;background:#fff2e3;border:1px solid #e6cdbb}
+.face{position:absolute;top:34%;display:flex;align-items:center;gap:13px;z-index:1}
+.eye{width:10px;height:13px;border-radius:50%;background:#211b26;box-shadow:inset 2px 2px 0 #fff}
+.beak{position:absolute;top:51%;width:0;height:0;z-index:2;border-left:8px solid transparent;border-right:8px solid transparent;border-top:11px solid #ff9e39}
+.blush{position:absolute;top:49%;width:16px;height:9px;border-radius:50%;background:#ff9eaa;opacity:.8;filter:blur(1px)}
+.blush.left{left:13%}.blush.right{right:13%}
+.wing{position:absolute;z-index:3;bottom:19%;width:26%;height:43%;border-radius:70% 35% 65% 35%;background:linear-gradient(100deg,#24212e,#4a3d49);border:2px solid #26212d}
+.wing.left{left:-4%;transform:rotate(24deg)}.wing.right{right:-4%;transform:rotate(-24deg)}
+.penguin .flower{position:absolute;z-index:4;left:42%;bottom:27%;font-size:21px;transform:rotate(-10deg)}
+.penguin.bow::after{content:"🎀";position:absolute;z-index:4;top:-10px;right:4px;font-size:23px;transform:rotate(12deg)}
+.penguin.back{height:clamp(100px,30vw,132px);border-color:#d79a77;background:linear-gradient(90deg,#24212d,#50404a,#292430)}
+.penguin.back::before,.penguin.back .face,.penguin.back .beak,.penguin.back .blush,.penguin.back .wing{display:none}
+.ledge{height:25px;width:calc(100% + 32px);margin:-4px -16px -20px;background:linear-gradient(180deg,#8a665d,#594657 55%,#3b3347);border-top:4px solid #f7bb8d;box-shadow:0 -5px 15px rgba(255,182,122,.15);position:relative;z-index:2;flex-shrink:0}
+.ledge::after{content:"🌼";position:absolute;left:4px;top:-26px;font-size:21px}
+.ledge::before{content:"🌸";position:absolute;right:5px;top:-26px;font-size:21px}
+.brick-wall{width:calc(100% + 32px);height:42px;margin:-2px -16px -20px;border-top:4px solid #f4b18c;background:repeating-linear-gradient(0deg,transparent 0 18px,rgba(57,42,57,.65) 19px 21px),repeating-linear-gradient(90deg,#80605f 0 48px,#594557 49px 52px);z-index:2;flex-shrink:0}
+.tiny-heart{font-size:24px;filter:drop-shadow(0 2px 6px rgba(255,120,162,.45))}
+.footnote{font-size:12px;line-height:1.4;opacity:.88;text-align:center;margin:0 0 5px;flex-basis:100%}
+.first-page .content{margin-top:8px;margin-bottom:6px;flex-shrink:0}
+.first-page .question{max-width:300px}
+.first-page .tiny-heart{display:none}
+.last-chance .content{margin-top:12px}
+@media(min-width:560px){.page{min-height:100svh;max-width:520px;margin:0 auto;border-left:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15)}body{background:#19172a}}
+@media(max-height:720px){.page{padding-top:10px;padding-bottom:12px}.content{gap:9px}.penguin{height:100px;width:90px}.penguin.back{height:96px}.question{font-size:24px}.paper{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* === Dreamy, understated redesign: no cream/yellow panels anywhere === */
+:root{
+  --ink:#fff8ff;
+  --pink:#ffabc9;
+  --cream:#fff4e8;
+  --night:#101b3c;
+}
+html,body{background:#111a38}
+.page{
+  background:transparent;
+  padding-top:max(22px,env(safe-area-inset-top));
+  padding-bottom:max(24px,env(safe-area-inset-bottom));
+}
+.scene::before{
+  background:
+    radial-gradient(ellipse at 50% 28%,rgba(255,191,214,.19),transparent 48%),
+    linear-gradient(180deg,rgba(13,20,49,.12),rgba(25,17,47,.12)),
+    linear-gradient(180deg,#292b56 0%,#65466f 38%,#e88983 69%,#282744 100%);
+}
+.scene-night::before{
+  background:
+    radial-gradient(ellipse at 50% 32%,rgba(118,145,211,.20),transparent 48%),
+    linear-gradient(180deg,#07152f 0%,#18284f 45%,#58436d 75%,#d77e83 100%);
+}
+.scene-last::before{
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(255,195,218,.15),transparent 46%),
+    linear-gradient(180deg,#111a3a 0%,#2c315c 42%,#8d5478 72%,#e89585 100%);
+}
+.scene-card::before{
+  background:
+    radial-gradient(ellipse at 50% 35%,rgba(255,213,222,.18),transparent 50%),
+    linear-gradient(180deg,#282344 0%,#69466d 37%,#e99586 72%,#41304f 100%);
+}
+.stars{
+  opacity:.72;
+  background-size:auto,auto,auto,auto,auto,auto,auto;
+  animation:starTwinkle 7s ease-in-out infinite alternate;
+}
+@keyframes starTwinkle{0%{opacity:.48;filter:brightness(.9)}100%{opacity:.95;filter:brightness(1.22)}}
+.page::after{
+  content:"";
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  opacity:.42;
+  background:
+    radial-gradient(circle at 12% 24%,rgba(255,213,225,.15) 0 1px,transparent 3px),
+    radial-gradient(circle at 84% 58%,rgba(255,228,180,.18) 0 1.4px,transparent 3px),
+    radial-gradient(circle at 28% 82%,rgba(255,213,225,.13) 0 1px,transparent 3px),
+    radial-gradient(ellipse at 50% 100%,rgba(255,171,201,.10),transparent 48%);
+}
+.paper{
+  width:100%;
+  padding:clamp(12px,3vw,20px) clamp(4px,2vw,12px);
+  color:#fff7fc!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  text-align:center;
+  line-height:1.62;
+  text-shadow:0 2px 13px rgba(9,12,34,.68),0 0 24px rgba(27,16,47,.24);
+}
+.paper h2{
+  color:#fff8ff;
+  font-size:clamp(25px,6.4vw,34px);
+  line-height:1.3;
+  text-shadow:0 3px 18px rgba(12,13,37,.55);
+}
+.paper p{font-size:clamp(17px,4.5vw,21px);margin:12px 0}
+.message-page .paper{
+  text-align:left;
+  font-size:clamp(16px,4.2vw,19px);
+  line-height:1.7;
+  padding:8px 2px;
+}
+.message-page .paper p{font-size:inherit;margin:13px 0}
+.message-page .paper strong{color:#ffe1ee}
+.content{width:min(100%,460px);gap:clamp(13px,2.5vh,22px)}
+.small-copy,.question,.reply{
+  text-shadow:0 2px 12px rgba(10,12,35,.72),0 0 20px rgba(22,14,43,.28);
+}
+.reply{
+  background:rgba(15,24,54,.30);
+  border:1px solid rgba(255,255,255,.23);
+  backdrop-filter:blur(5px);
+}
+.btn,.chat-button{
+  box-shadow:0 5px 0 rgba(37,22,51,.22),0 10px 24px rgba(12,12,35,.20);
+  transition:transform .22s ease,filter .22s ease,box-shadow .22s ease;
+}
+.btn{border:1px solid rgba(255,255,255,.30);border-radius:18px}
+.btn.secondary{background:rgba(250,239,250,.94)}
+.btn:not(.secondary){background:linear-gradient(135deg,#ffb5cd,#f18eae)}
+@media(hover:hover){
+ .btn:hover,.chat-button:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 7px 0 rgba(37,22,51,.18),0 14px 28px rgba(12,12,35,.24)}
+}
+.penguin{
+  animation:gentleBob 5.5s ease-in-out infinite;
+  filter:drop-shadow(0 10px 14px rgba(12,10,31,.25));
+}
+.penguin:nth-child(2){animation-delay:-2.7s}
+@keyframes gentleBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.penguin .eye{animation:blinkSoft 6.5s infinite}
+@keyframes blinkSoft{0%,45%,49%,100%{transform:scaleY(1)}47%{transform:scaleY(.12)}}
+.lantern{animation:lanternDrift 6s ease-in-out infinite;transform-origin:50% 0}
+@keyframes lanternDrift{0%,100%{rotate:-2deg}50%{rotate:2deg}}
+.moon{filter:drop-shadow(0 0 18px rgba(255,222,145,.42));animation:moonGlow 5s ease-in-out infinite alternate}
+@keyframes moonGlow{from{filter:drop-shadow(0 0 9px rgba(255,222,145,.24))}to{filter:drop-shadow(0 0 22px rgba(255,222,145,.55))}}
+.final-message,.no-message{
+  max-width:440px;padding:16px 8px;text-align:center;color:#fff8ff;
+  text-shadow:0 3px 18px rgba(8,13,35,.76);
+}
+.final-message h2,.no-message h2{
+  font-size:clamp(27px,7vw,36px);font-weight:normal;line-height:1.35;margin:8px 0 14px
+}
+.final-message p,.no-message p{font-size:clamp(18px,4.8vw,23px);line-height:1.6;margin:10px 0}
+.final-sparkle{color:#ffe7bc;text-shadow:0 0 18px rgba(255,224,166,.7);animation:softSparkle 3.5s ease-in-out infinite}
+.no-heart{filter:drop-shadow(0 0 12px rgba(255,255,255,.25));animation:softSparkle 4s ease-in-out infinite}
+@keyframes softSparkle{0%,100%{opacity:.78;scale:1}50%{opacity:1;scale:1.07}}
+/* Respect visitors who prefer reduced motion. */
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+
+/* One gentle retry per question, with a playful growing Yes button. */
+.nudge-page .content{margin:auto;max-width:430px;text-align:center;gap:12px}
+.nudge-emoji{font-size:clamp(36px,9vw,52px);filter:drop-shadow(0 5px 16px rgba(255,190,220,.25))}
+.nudge-title{font-size:clamp(25px,6.5vw,34px);font-weight:normal;line-height:1.35;color:#fff7fc;text-shadow:0 3px 16px rgba(9,12,34,.72);margin:4px 0}
+.nudge-page .small-copy{font-size:clamp(17px,4.4vw,21px);line-height:1.55}
+.nudge-page .buttons{gap:13px}
+.growing-yes{animation:yesGrow 1.15s cubic-bezier(.2,.8,.2,1) both;transform:scale(1.055);box-shadow:0 0 0 5px rgba(255,176,207,.13),0 8px 26px rgba(255,135,183,.26)}
+@keyframes yesGrow{0%{scale:.92}70%{scale:1.09}100%{scale:1.055}}
+.yay-content{margin:auto;text-align:center;gap:10px}
+.yay-art{font-size:clamp(56px,15vw,82px);filter:drop-shadow(0 0 22px rgba(255,169,205,.48));animation:yayFloat 3s ease-in-out infinite}
+.yay-title{font-size:clamp(38px,10vw,54px);font-weight:normal;color:#fff8ff;text-shadow:0 4px 22px rgba(10,12,35,.65);margin:0}
+@keyframes yayFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.035)}}
+#p6 .no-message{max-width:460px}
+#p6 .no-message p{font-size:clamp(16px,4.1vw,20px)}
+#p6 .buttons{margin-top:8px}
+
+
+/* Opening scene: vivid sunset-pink/lilac, playful interaction, teddy characters. */
+#p1::before{
+ background:
+   radial-gradient(ellipse at 50% 34%,rgba(255,190,213,.42),transparent 43%),
+   radial-gradient(ellipse at 12% 78%,rgba(255,177,142,.30),transparent 38%),
+   linear-gradient(180deg,#34254f 0%,#755078 30%,#d77c91 63%,#f6a17f 82%,#49304f 100%) !important;
+}
+#p1 .opening-content{margin:clamp(34px,8vh,78px) auto 0;gap:10px;text-align:center}
+.opening-kicker{font-family:Georgia,serif;font-size:clamp(15px,4vw,19px);letter-spacing:.16em;text-transform:uppercase;color:#ffe4ef;text-shadow:0 2px 14px rgba(30,15,48,.55)}
+.opening-title{font-family:"Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(37px,9.2vw,53px);font-weight:600;font-style:italic;line-height:1.16;letter-spacing:-.035em;color:#fff8fc;text-shadow:0 4px 20px rgba(38,18,53,.52),0 0 26px rgba(255,208,226,.25);margin:4px 0}
+.opening-title span{color:#ffd2e3;text-decoration:underline;text-decoration-color:rgba(255,207,226,.48);text-decoration-thickness:2px;text-underline-offset:7px}
+.opening-sparkles{color:#ffe7b8;font-size:20px;letter-spacing:.2em;opacity:.9}
+.opening-buttons{gap:12px}
+.opening-yes{transform:scale(1);transform-origin:center;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.opening-no{transition:transform .22s ease}
+.no-wiggle{animation:noWiggle .38s ease}
+@keyframes noWiggle{0%,100%{translate:0 0}25%{translate:-5px 0}75%{translate:5px 0}}
+.teddy-pair{display:flex;align-items:flex-end;justify-content:center;gap:clamp(0px,3vw,18px);width:100%;min-height:clamp(125px,22vh,205px);margin-top:auto;position:relative;z-index:1}
+.teddy{display:inline-block;font-size:clamp(100px,28vw,165px);line-height:1;filter:drop-shadow(0 13px 12px rgba(32,17,42,.28));transform-origin:bottom center;animation:teddyBob 4s ease-in-out infinite}
+.teddy-two{animation-delay:-2s;transform:scaleX(-1)}
+@keyframes teddyBob{0%,100%{translate:0 0;rotate:-2deg}50%{translate:0 -7px;rotate:2deg}}
+#p1 .teddy-pair{margin-bottom:0}
+#p4 .teddy-pair,#p5 .teddy-pair,#p6 .teddy-pair,#p7 .teddy-pair,#p8 .teddy-pair,#p9 .teddy-pair,#p10 .teddy-pair,#p11 .teddy-pair,#p12 .teddy-pair{min-height:clamp(95px,17vh,150px)}
+@media(max-height:720px){#p1 .opening-content{margin-top:20px}.teddy{font-size:clamp(82px,22vw,125px)}}
+
+
+/* Approved live interactions */
+#p1::before{background:radial-gradient(ellipse at 50% 35%,rgba(255,188,218,.50),transparent 43%),radial-gradient(ellipse at 12% 75%,rgba(255,174,145,.32),transparent 38%),linear-gradient(180deg,#39234f 0%,#75476f 31%,#c66c8a 58%,#f19a83 83%,#4a2e50 100%)!important}
+#p5::before{background:radial-gradient(ellipse at 50% 35%,rgba(255,187,214,.35),transparent 45%),linear-gradient(180deg,#38254e 0%,#875273 44%,#e9968b 82%,#503252 100%)!important}
+.opening-content{margin:clamp(25px,6vh,65px) auto 0;text-align:center;gap:10px}
+.opening-kicker{font-size:clamp(13px,3.4vw,17px);letter-spacing:.15em;text-transform:uppercase;color:#ffe3ef;text-shadow:0 2px 12px rgba(30,15,48,.55)}
+.opening-title{font-family:"Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(38px,9.2vw,54px);font-weight:600;font-style:italic;line-height:1.16;letter-spacing:-.035em;color:#fff8fc;text-shadow:0 4px 20px rgba(38,18,53,.52);margin:4px 0}
+.opening-title span{color:#ffd2e3;text-decoration:underline;text-decoration-color:rgba(255,207,226,.48);text-decoration-thickness:2px;text-underline-offset:7px}
+.opening-sparkles{color:#ffe7b8;font-size:20px;letter-spacing:.2em}
+.bear-stage{width:100%;height:clamp(145px,27vh,235px);display:flex;align-items:flex-end;justify-content:center;position:relative;margin-top:auto;z-index:2}
+.cuddle-bear{width:clamp(125px,37vw,190px);position:relative;transform-origin:bottom center;filter:drop-shadow(0 12px 13px rgba(34,16,42,.25))}
+.cuddle-bear .bear-svg{display:block;width:100%;height:auto}
+.bear-left{z-index:2;transform:translateX(15px) rotate(-5deg);animation:cuddleLeft 3.6s ease-in-out infinite}
+.bear-right{z-index:1;transform:translateX(-15px) scaleX(-1) rotate(-5deg);animation:cuddleRight 3.6s ease-in-out infinite}
+@keyframes cuddleLeft{0%,100%{translate:0 0;rotate:-4deg}50%{translate:5px -5px;rotate:0deg}}
+@keyframes cuddleRight{0%,100%{translate:0 0;rotate:-4deg}50%{translate:-5px -5px;rotate:0deg}}
+.cuddle-heart{position:absolute;top:4%;left:50%;color:#ffb5d0;font-size:35px;z-index:3;animation:heartPulse 2.1s ease-in-out infinite}
+@keyframes heartPulse{0%,100%{transform:translate(-50%,0) scale(.9);opacity:.7}50%{transform:translate(-50%,-8px) scale(1.15);opacity:1}}
+.opening-buttons{gap:12px;margin-top:12px;z-index:5}
+.opening-yes,.opening-no{min-height:58px;transition:transform .34s cubic-bezier(.2,.8,.2,1),box-shadow .34s ease,translate .3s ease}
+.yes-growing{transform:scale(var(--growth,1.13));z-index:4;box-shadow:0 0 0 5px rgba(255,190,215,.18),0 10px 30px rgba(255,120,175,.38)}
+.reverse-order{flex-direction:row-reverse}.reverse-order .opening-no,.reverse-order #friendNo{translate:0 0}
+.no-wiggle{animation:noWiggle .38s ease}
+@keyframes noWiggle{0%,100%{rotate:0deg}25%{rotate:-3deg}75%{rotate:3deg}}
+#p5 .paper{background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;color:#fff7fc!important;text-shadow:0 2px 14px rgba(15,12,37,.7)}
+#p5 .paper h2,#p5 .paper p{color:#fff7fc}
+#p5 .bear-stage{height:clamp(100px,17vh,150px)}
+#p5 .cuddle-bear{width:clamp(95px,28vw,145px)}
+.yay-page{justify-content:center;align-items:center;overflow:hidden}
+.yay-page::before{background:radial-gradient(ellipse at center,#612a59 0%,#321735 55%,#160d20 100%)!important}
+.yay-center{width:100%;display:flex;justify-content:center;align-items:center;min-height:70vh;position:relative}
+.celebration-glow{position:absolute;width:min(80vw,440px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,111,174,.25),rgba(125,58,132,.10) 45%,transparent 70%);animation:glowBreath 2.5s ease-in-out infinite}
+@keyframes glowBreath{0%,100%{transform:scale(.9);opacity:.65}50%{transform:scale(1.08);opacity:1}}
+.yay-bear-stage{width:min(76vw,310px);position:relative;display:flex;flex-direction:column;align-items:center;z-index:2}
+.yay-word{font-family:system-ui,sans-serif;font-size:clamp(44px,12vw,68px);font-weight:1000;font-style:italic;letter-spacing:-.06em;color:#54c7f3;-webkit-text-stroke:2px white;text-shadow:3px 5px 0 #163e67;transform:rotate(-8deg);z-index:3;animation:yayWordPop .7s cubic-bezier(.2,1.5,.4,1) both}
+.yay-bear{width:75%;height:auto;filter:drop-shadow(0 12px 15px rgba(0,0,0,.22));animation:yayBounce 1.15s ease-in-out infinite}
+.yay-arm{transform-box:fill-box;transform-origin:center;animation:armsUp .65s ease-in-out infinite alternate}
+.yay-arm-left{rotate:-9deg}.yay-arm-right{rotate:9deg}
+@keyframes armsUp{from{translate:0 4px}to{translate:0 -10px}}
+@keyframes yayBounce{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
+@keyframes yayWordPop{0%{opacity:0;scale:.45;translate:0 25px}100%{opacity:1;scale:1;translate:0 0}}
+.yay-heart{position:absolute;color:#ff8db8;font-size:30px;animation:floatHeart 2.8s ease-in-out infinite}
+.heart-a{top:24%;left:2%}.heart-b{top:45%;right:0;animation-delay:.8s}.heart-c{top:8%;right:12%;color:#ffe3a4;animation-delay:1.2s}
+@keyframes floatHeart{0%,100%{transform:translateY(8px) scale(.8);opacity:.45}50%{transform:translateY(-18px) scale(1.15);opacity:1}}
+@media(max-height:720px){.opening-content{margin-top:18px}.bear-stage{height:clamp(110px,22vh,170px)}.opening-title{font-size:clamp(34px,8vw,46px)}}
+@media(prefers-reduced-motion:reduce){.cuddle-bear,.cuddle-heart,.yay-bear,.yay-arm,.yay-word,.yay-heart,.celebration-glow{animation:none!important}}
+
+</style>
+</head>
+<body>
+<main id="app">
+<section class="page scene first-page active" id="p1"><div class="stars"></div><div class="vines"></div><div class="lantern">🏮</div><div class="city"></div>
+<div class="content opening-content"><div class="opening-kicker">A little note for you ✨</div><h1 class="opening-title">Heyy...<br>can I ask you<br><span>something?</span> 💗</h1><div class="opening-sparkles">✦ &nbsp; ♡ &nbsp; ✦</div></div>
+<div class="bear-stage"><div class="cuddle-bear bear-left"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><div class="cuddle-bear bear-right"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><span class="cuddle-heart">♡</span></div><div class="ledge"></div><div class="buttons opening-buttons"><button class="btn opening-yes" id="firstYes" onclick="go('p12')">Yess, sure :)</button><button class="btn secondary opening-no" id="firstNo" onclick="firstNo()">Hmm... not now</button></div></section>
+
+
+
+
+
+<section class="page scene scene-night" id="p4"><div class="stars"></div><div class="vines"></div><div class="city"></div><div class="moon">🌙</div><div class="content no-content"><div class="no-message"><div class="no-heart">🤍</div><h2>That's completely okay.</h2><p>Thank you for your time. I respect your choice. Take care, keep smiling, and have a lovely day. 🌷</p><h2>Byeeee ❤️</h2></div></div><div class="bear-stage"><div class="cuddle-bear bear-left"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><div class="cuddle-bear bear-right"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><span class="cuddle-heart">♡</span></div><div class="ledge"></div></section><section class="page scene scene-card" id="p5"><div class="stars"></div><div class="vines"></div><div class="city"></div><div class="content"><div class="paper"><h2>Yayy! 💗</h2><p>So here it is...</p><p>Would you be okay with us getting a little closer as friends? 🌼</p><p>Just talking more, getting to know each other better, sharing thoughts, and making more memories. Nothing more than what you're comfortable with, of course. 💗</p></div></div><div class="bear-stage"><div class="cuddle-bear bear-left"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><div class="cuddle-bear bear-right"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><span class="cuddle-heart">♡</span></div><div class="ledge"></div><div class="buttons"><button class="btn full" id="friendYes" onclick="go('p7')">Yeah, I'd be okay with that 💛</button><button class="btn secondary full" id="friendNo" onclick="friendshipNo()">I don't think so 😌</button></div></section>
+
+<section class="page scene scene-night" id="p6"><div class="stars"></div><div class="vines"></div><div class="city"></div><div class="moon">🌙</div><div class="content no-content"><div class="no-message"><div class="no-heart">🤍</div><h2>Thank you for being honest with me.</h2><p>It's completely okay. I respect how you feel, and I genuinely hope life brings you happiness, beautiful moments, and everything your heart wishes for. 🌷</p><p>You'll be my one unsuccessful wish, but that's okay. I'll still wish the very best for you. ✨</p><h2>Take care and keep smiling. Byeeee ❤️</h2></div></div><div class="bear-stage"><div class="cuddle-bear bear-left"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><div class="cuddle-bear bear-right"><svg class="bear-svg" viewBox="0 0 220 230" role="img" aria-label="Cute white cartoon teddy bear">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/>
+<ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="174" rx="58" ry="48" fill="#FFF8F4"/>
+<ellipse cx="53" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(24 53 157)"/><ellipse cx="167" cy="157" rx="22" ry="42" fill="#FFF8F4" transform="rotate(-24 167 157)"/>
+<ellipse cx="110" cy="112" rx="37" ry="29" fill="#F8DCD8" stroke="none"/>
+<circle cx="86" cy="82" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="82" r="6" fill="#3B2637" stroke="none"/>
+<ellipse cx="110" cy="105" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M110 112 Q101 125 91 116 M110 112 Q119 125 129 116" fill="none"/>
+<circle cx="70" cy="111" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="111" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg></div><span class="cuddle-heart">♡</span></div><div class="ledge"></div><div class="buttons"><button class="btn full" id="sendNo" onclick="confirmNo()">Send my response 🤍</button></div></section>
+
+<section class="page scene scene-card" id="p7">
+<div class="stars"></div><div class="vines"></div><div class="city"></div>
+<div class="content"><div class="paper"><h2>First of all...</h2><h2>Thank you! 💗</h2><p>I just wanted to be honest with you, about a few things... 🌼</p></div></div>
+<div class="penguins teddy-pair"><span class="teddy teddy-one" aria-label="teddy bear">🧸</span><span class="teddy teddy-two" aria-label="teddy bear">🧸</span></div><div class="ledge"></div><div class="buttons"><button class="btn full" onclick="go('p8')">Read my message 💌</button></div>
+</section>
+
+<section class="page scene scene-card message-page" id="p8">
+<div class="stars"></div><div class="vines"></div><div class="lantern">🏮</div><div class="city"></div>
+<div class="content"><div class="paper"><p><strong>Okay, so here it goes... 🙈</strong></p><p>I find you really cute, and honestly, I can't quite explain why. There's just something about you that caught my attention. 🌷✨</p><p>I just wanted to talk to you and have one of those long conversations where we lose track of time. You know, the kind where one conversation turns into hours without even realizing it. ☁️💗</p><p>I first felt like talking to you during the trip itself, but somehow, it never happened. And that's why I'm asking you now. 😊</p><p>I know this might sound like a dialogue straight out of a movie 😂, but you're the one who dragged me this far! And somehow, you gave me a different kind of energy because I've found other girls cute too, but I never really felt this same urge to go up to them and start a conversation. With you, it just felt different. 🌸💗</p><p>Sooo yeah, that's pretty much it! I just wanted to be honest with you and say what was on my mind. No expectations, no pressure, and nothing you need to feel awkward about. I just wanted you to know. :) 💗</p><p>That's all I wanted to say... thank you for reading this. 🐧💌</p></div></div>
+<div class="penguins teddy-pair"><span class="teddy teddy-one" aria-label="teddy bear">🧸</span><span class="teddy teddy-two" aria-label="teddy bear">🧸</span></div><div class="ledge"></div>
+<div class="buttons"><button class="btn full" id="sendYes" onclick="confirmYes()">Yes, I'm okay with that 💌</button><button class="btn secondary full" onclick="go('p9')">I'd rather not answer 🤍</button><p class="footnote">The first button tries to save a confirmation for the website owner. No reply is sent if you choose not to answer.</p></div>
+</section>
+
+<section class="page scene scene-card" id="p9">
+<div class="stars"></div><div class="vines"></div><div class="city"></div>
+<div class="content"><div class="paper"><h2>Thank you for reading 🤍</h2><p>No pressure at all. Take care, keep smiling, and have a lovely day. 🌼</p><h2>Byeeee ❤️</h2></div></div>
+<div class="penguins teddy-pair"><span class="teddy teddy-one" aria-label="teddy bear">🧸</span><span class="teddy teddy-two" aria-label="teddy bear">🧸</span></div><div class="ledge"></div>
+</section>
+
+<section class="page scene scene-night" id="p10">
+<div class="stars"></div><div class="vines"></div><div class="city"></div><div class="moon">🌙</div>
+<div class="content final-content"><div class="final-message"><div class="final-sparkle">✦</div><h2>Thank you for telling me! 💗</h2><p>Your response has been recorded. 🌷</p></div></div>
+<div class="penguins teddy-pair"><span class="teddy teddy-one" aria-label="teddy bear">🧸</span><span class="teddy teddy-two" aria-label="teddy bear">🧸</span></div><div class="ledge"></div>
+</section>
+
+
+
+<section class="page scene scene-last yay-page" id="p12"><div class="stars"></div><div class="vines"></div><div class="city"></div><div class="celebration-glow"></div><div class="yay-center"><div class="yay-bear-stage"><div class="yay-word">YAAS!</div>
+<svg class="yay-bear" viewBox="0 0 220 240" role="img" aria-label="Happy teddy bear celebrating">
+<g stroke="#3B2637" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="61" cy="48" r="25" fill="#FFF8F4"/><circle cx="159" cy="48" r="25" fill="#FFF8F4"/><ellipse cx="110" cy="91" rx="66" ry="67" fill="#FFF8F4"/><ellipse cx="110" cy="178" rx="58" ry="48" fill="#FFF8F4"/>
+<path class="yay-arm yay-arm-left" d="M62 150 Q20 118 35 75 Q42 58 54 72 Q63 82 57 104 L83 135" fill="#FFF8F4"/><path class="yay-arm yay-arm-right" d="M158 150 Q200 118 185 75 Q178 58 166 72 Q157 82 163 104 L137 135" fill="#FFF8F4"/>
+<ellipse cx="110" cy="120" rx="37" ry="27" fill="#F8DCD8" stroke="none"/><circle cx="86" cy="91" r="6" fill="#3B2637" stroke="none"/><circle cx="134" cy="91" r="6" fill="#3B2637" stroke="none"/><ellipse cx="110" cy="113" rx="9" ry="7" fill="#3B2637" stroke="none"/><path d="M93 126 Q110 145 127 126" fill="none"/><circle cx="70" cy="120" r="10" fill="#F4A9B5" stroke="none"/><circle cx="150" cy="120" r="10" fill="#F4A9B5" stroke="none"/>
+</g></svg><span class="yay-heart heart-a">♥</span><span class="yay-heart heart-b">♥</span><span class="yay-heart heart-c">✦</span></div></div></section>
+</main>
+<script>
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAop-iJuRaoDRnVmxCE_bLgINaINnBQXyk",
+  authDomain: "just-between-us-4eecd.firebaseapp.com",
+  projectId: "just-between-us-4eecd",
+  storageBucket: "just-between-us-4eecd.firebasestorage.app",
+  messagingSenderId: "143912866674",
+  appId: "1:143912866674:web:acb42812493a80586cc3eb",
+  measurementId: "G-1G5MTD3LZ9"
+};
+
+
+let firstNoCount=0, friendshipNoCount=0, firebaseLoadPromise=null;
+function firstNo(){
+ const yes=document.getElementById("firstYes"), no=document.getElementById("firstNo");
+ firstNoCount++;
+ const labels=["Are you sure?","Really?","Think again?"];
+ if(firstNoCount<=3){
+  no.textContent=labels[firstNoCount-1];
+  no.parentElement.classList.toggle("reverse-order");
+  yes.classList.add("yes-growing");
+  yes.style.setProperty("--growth",String(1+firstNoCount*.13));
+  no.classList.remove("no-wiggle");void no.offsetWidth;no.classList.add("no-wiggle");
+ }else go("p4");
+}
+function friendshipNo(){
+ const yes=document.getElementById("friendYes"),no=document.getElementById("friendNo");
+ friendshipNoCount++;
+ if(friendshipNoCount===1){
+  no.textContent="Are you sure? 🥺";no.parentElement.classList.toggle("reverse-order");
+  yes.classList.add("yes-growing");yes.style.setProperty("--growth","1.14");
+  no.classList.remove("no-wiggle");void no.offsetWidth;no.classList.add("no-wiggle");
+ }else go("p6");
+}
+function go(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ const next=document.getElementById(id);if(!next){console.error("Missing page:",id);return;}
+ next.classList.add("active");next.scrollTop=0;window.scrollTo({top:0,behavior:"smooth"});
+ if(id==="p12"){clearTimeout(window.__yayTimer);window.__yayTimer=setTimeout(()=>go("p5"),2600);}
+}
+async function saveChoice(choice,message){
+ const btn=choice==="yes"?document.getElementById("sendYes"):document.getElementById("sendNo");
+ if(btn){btn.disabled=true;btn.textContent="Sending...";}
+ try{
+  if(!FIREBASE_CONFIG.apiKey||!FIREBASE_CONFIG.projectId)throw new Error("Firebase configuration is incomplete.");
+  if(!window.firebase||!firebase.firestore)await loadFirebase();
+  if(!firebase.apps.length)firebase.initializeApp(FIREBASE_CONFIG);
+  await firebase.firestore().collection("friendshipConfirmations").add({
+   confirmation:choice,message:message,createdAt:firebase.firestore.FieldValue.serverTimestamp()
+  });
+  go("p10");
+ }catch(e){
+  console.error("Firebase save failed:",e);
+  alert("Your response could not be saved ("+(e.code||"unknown")+").\n"+(e.message||"Unknown Firebase error")+"\n\nPlease check Firestore setup and its security rules.");
+  if(btn){btn.disabled=false;btn.textContent=choice==="yes"?"Yes, send my response 💗":"Send my response 🤍";}
+ }
+}
+function confirmYes(){return saveChoice("yes","I am okay with getting closer as friends");}
+function confirmNo(){return saveChoice("no","I am not comfortable getting closer as friends");}
+function loadFirebase(){
+ if(firebaseLoadPromise)return firebaseLoadPromise;
+ firebaseLoadPromise=new Promise((resolve,reject)=>{
+  const add=src=>new Promise((res,rej)=>{const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=()=>rej(new Error("Unable to load Firebase library."));document.head.appendChild(s);});
+  (async()=>{try{await add("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js");await add("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js");if(!window.firebase||!firebase.firestore)throw new Error("Firebase Firestore did not initialize.");resolve();}catch(e){firebaseLoadPromise=null;reject(e);}})();
+ });
+ return firebaseLoadPromise;
+}
+</script>
+</body>
+</html>
